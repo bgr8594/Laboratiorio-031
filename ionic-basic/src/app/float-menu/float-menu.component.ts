@@ -15,7 +15,13 @@ export class FloatMenuComponent implements OnInit {
     {nombre: 'Receteas',enlace:'/recetas',
     icono:'restaurant-outline'},
     {nombre: 'Tabs',enlace:'/tabs',
-    icono:'folder-outline'}
+    icono:'folder-outline'},
+    {nombre: 'Register',enlace:'/register',
+    icono:'person-add'},
+    {nombre: 'Login',enlace:'/login',
+    icono:'log-in'},
+    {nombre: 'Logout',enlace:'/home',
+    icono:'log-out'}
     ];
 
   constructor(private router: Router) { }
