@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ionic-basic-031-583fd": {
+      "hosting": {
+        "app": [
+          "ionic-basic-031-583fd"
+        ]
+      }
+    }
+  }
+}
