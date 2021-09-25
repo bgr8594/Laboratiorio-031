@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+import { AuthserviceService } from '../services/authservice.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +10,16 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private auySvc: AuthserviceService,
+    private router: Router,
+    private afAuth: AngularFireAuth) {}
+
+onLogout()
+{
+  console.log('logout');
+  this.afAuth.auth.signOut();
+
+  this.router.navigateByUrl('/login');
+}
 
 }
