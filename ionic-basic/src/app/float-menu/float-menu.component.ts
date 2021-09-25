@@ -12,10 +12,16 @@ export class FloatMenuComponent implements OnInit {
   datosMenu: MenuElement[] =[
     {nombre: 'Alumnos',enlace:'/alumnos',
     icono:'school-outline'},
-    {nombre: 'Receteas',enlace:'/recetas',
+    {nombre: 'Recetas',enlace:'/recetas',
     icono:'restaurant-outline'},
     {nombre: 'Tabs',enlace:'/tabs',
-    icono:'folder-outline'}
+    icono:'folder-outline'},
+    {nombre: 'Register',enlace:'/register',
+    icono:'person-add'}, 
+    {nombre: 'Login', enlace: '/login', 
+  icono: 'log-in'}, 
+  {nombre: 'Logout', enlace: '/home', 
+icono: 'log-out'}
     ];
 
   constructor(private router: Router) { }
