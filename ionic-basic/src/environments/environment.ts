@@ -10,6 +10,7 @@ export const environment = {
     projectId: "ionic-basic-4a640",
     storageBucket: "ionic-basic-4a640.appspot.com",
     messagingSenderId: "467507404753",
+    appId: "1:467507404753:web:350fa0e9fbfed4c6cc4af0",
   }
 };
 
