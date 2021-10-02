@@ -11,9 +11,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentesModule } from './componentes/componentes.module';
+import { ModalErrorComponent } from './modal-error/modal-error.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ModalErrorComponent],
   entryComponents: [],
   imports: [ComponentesModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, 
   AngularFireModule.initializeApp(environment.firebaseConfig), 
