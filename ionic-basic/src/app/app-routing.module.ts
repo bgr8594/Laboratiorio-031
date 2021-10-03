@@ -48,6 +48,11 @@ const routes: Routes = [
     path: 'registre',
     loadChildren: () => import('./registre/registre.module').then( m => m.RegistrePageModule)
   },
+  {
+    path: 'destinos', canActivate:[AuthGuard],
+    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
+  },
+
 
 
 

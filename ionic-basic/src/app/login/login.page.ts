@@ -5,6 +5,7 @@ import { User } from '../shared/user';
 import { AuthserviceService } from '../services/authservice.service';
 import { ModalController } from '@ionic/angular';
 import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms'
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-login',
@@ -17,17 +18,30 @@ export class LoginPage implements OnInit {
   constructor(private router: Router,
     private modalCtrl: ModalController,
     private autSvc: AuthserviceService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder
+  //,private firestore: AngularFirestore) 
+    ){ }
 
   ngOnInit() {
+    /*
+    const usuario ={nombre: 'Benito', activo:true,
+  
+    fechanaci:0};
+
+    this.firestore.collection('usuario').add(usuario)
+    */
+    
     this.buildForm();
   }
+
 
   async onLogin(){
     const user = await this.autSvc.onLogin(this.user);
     if(user!=null && user.code == undefined){
       console.log('Successfully logged in!');
-      this.router.navigate(['/home']);
+      setTimeout(()=> {
+        this.router.navigate(['/home']);
+      }, 500);
     }
     else{
       if(user.code){
