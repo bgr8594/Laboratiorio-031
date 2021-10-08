@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { MenuElement } from './menu.model';
 import { Router } from '@angular/router';
 
@@ -20,6 +19,8 @@ export class FloatMenuComponent implements OnInit {
     icono:'person-add'},
     {nombre: 'login',enlace:'/login',
     icono:'log-in'},
+    {nombre: 'Turismo',enlace:'/destinos',
+    icono:'airplane'},
     {nombre: 'logout',enlace:'/home',
     icono:'log-out'}
   ];

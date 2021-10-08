@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {ModalErrorComponent} from '../modal-error/modal-error.component';
+import { ModalController } from '@ionic/angular';
+import { ModalErrorComponent } from '../modal-error/modal-error.component';
 import { User } from '../shared/user';
 import { AuthserviceService } from '../services/authservice.service';
-import { ModalController } from '@ionic/angular';
-import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms'
+import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
+//import { AngularFirestore } from 'angularfire2/firestore';
 
 @Component({
   selector: 'app-login',
@@ -17,17 +18,28 @@ export class LoginPage implements OnInit {
   constructor(private router: Router,
     private modalCtrl: ModalController,
     private autSvc: AuthserviceService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder
+    //,private firestore: AngularFirestore
+    ) { }
 
   ngOnInit() {
+    /*
+    const usuario ={nombre:'Brenda', activo:true,
+    fechanaci:0};
+      this.firestore.collection('usuario').add(usuario);
+      */
+
     this.buildForm();
   }
 
+  
   async onLogin(){
     const user = await this.autSvc.onLogin(this.user);
-    if(user!=null && user.code == undefined){
+    if(user!=null && user.code ==undefined){
       console.log('Successfully logged in!');
-      this.router.navigate(['/home']);
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 650);
     }
     else{
       if(user.code){
@@ -42,7 +54,7 @@ export class LoginPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: ModalErrorComponent,
       componentProps:{
-        error: 'Ingrese password y/o contraseña'  
+        error: 'Ingres password y/o contraseña'
       }
     });
     return await modal.present();
@@ -59,20 +71,22 @@ export class LoginPage implements OnInit {
   buildForm(){
     this.ionicForm = this.formBuilder.group({
       email: new FormControl('',{validators: [Validators.email,Validators.required]}),
-      password: new FormControl('',{validators: [Validators.required, Validators.minLength(6), Validators.maxLength(6)]})
+      password: new FormControl('', {validators: [Validators.required, Validators.minLength(6), Validators.maxLength(6)]})
     });
   }
 
-  hasError: any = (controlName: string, errorName: string)=>{
-    return !this.ionicForm.controls[controlName].valid &&
-    this.ionicForm.controls[controlName].hasError(errorName) &&
-    this.ionicForm.controls[controlName].touched;
-  }
+  hasError: any = (controlName: string, errorName: string) => {
+		return !this.ionicForm.controls[controlName].valid &&
+			this.ionicForm.controls[controlName].hasError(errorName) &&
+			this.ionicForm.controls[controlName].touched;
+	}
 
-  notZero(control: AbstractControl) {
-    if(control.value && control.value.monto <= 0){
-      return { 'notZero': true};
-    }
-    return null
-  }
-} 
+
+	notZero(control: AbstractControl) {
+		if (control.value && control.value.monto <= 0) {
+			return { 'notZero': true };
+		}
+		return null;
+	} 
+   
+}
