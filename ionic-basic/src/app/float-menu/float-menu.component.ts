@@ -20,6 +20,8 @@ export class FloatMenuComponent implements OnInit {
     icono:'person-add'},
     {nombre: 'Login',enlace:'/login',
     icono:'log-in'},
+    {nombre: 'Turismo',enlace:'/destinos',
+    icono:'airplane'},
     {nombre: 'Logout',enlace:'/home',
     icono:'log-out'}
     ];
@@ -28,7 +30,7 @@ export class FloatMenuComponent implements OnInit {
 
   ngOnInit() {  }
 
-  
+
   navegar(link: string) {
     this.router.navigate([link]);
   }

@@ -5,6 +5,7 @@ import { ModalErrorComponent } from '../modal-error/modal-error.component';
 import { User } from '../shared/user';
 import { AuthserviceService } from '../services/authservice.service';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+//import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,16 @@ export class LoginPage implements OnInit {
   constructor(private router: Router,
     private modalCtrl: ModalController,
     private autSvc: AuthserviceService,
-    private formBuilders: FormBuilder) { }
+    private formBuilders: FormBuilder,
+    //private firestore: AngularFirestore
+    ) { }
 
   ngOnInit() {
+    /*
+    const usuario = {nombre: 'Leonardo', activo: true,
+    fechanaci: 0};
+    this.firestore.collection('usuario').add(usuario);
+    */
     this.buildForm();
   }
 
@@ -28,7 +36,10 @@ export class LoginPage implements OnInit {
     const user = await this.autSvc.onLogin(this.user);
     if(user!=null && user.code == undefined){
       console.log('Successfully logged in!');
-      this.router.navigate(['/home']);
+      setTimeout(()=>{
+        this.router.navigate(['/home']);
+      }, 750);
+
     }
     else{
       if(user.code){
@@ -38,6 +49,7 @@ export class LoginPage implements OnInit {
       }
     }
   }
+
   async openModal(user: any) {
     const modal = await this.modalCtrl.create({
       component: ModalErrorComponent,
