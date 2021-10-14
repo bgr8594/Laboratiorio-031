@@ -32,6 +32,7 @@
         </ion-item>
         <ion-item-divider>
             <ion-button size="larger" type="submit">Login</ion-button>
+            <ion-button size="larger" type="submit" [disabled]="!(ionicForm.valid)" type="submit">Login</ion-button>
             <ion-button size="larger" routerLink="/register">New</ion-button>
         </ion-item-divider>
     </form>

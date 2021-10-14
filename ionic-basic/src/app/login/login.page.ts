@@ -7,6 +7,8 @@ import { ModalErrorComponent } from '../modal-error/modal-error.component';
 import { User } from '../shared/user';
 import { AuthserviceService } from '../services/authservice.service';
 import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
+//import { AngularFirestore } from 'angularfire2/firestore';
+
 
 @Component({
   selector: 'app-login',
@@ -22,7 +24,13 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this.buildForm();
+     /*
+    const usuario ={nombre:'Benito', activo:true,
+    fechanaci:0};
+      this.firestore.collection('usuario').add(usuario);
+      */
+
+      this.buildForm();
   }
 
   
@@ -31,6 +39,9 @@ export class LoginPage implements OnInit {
     if(user!=null && user.code ==undefined){
       console.log('Successfully logged in!');
       this.router.navigate(['/home']);
+      setTimeout(() => {
+        this.router.navigate(['/home']);
+      }, 650);
     }
     else{
       if(user.code){
