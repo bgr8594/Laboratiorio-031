@@ -6,11 +6,11 @@ export const environment = {
   production: false,
   firebaseConfig: {
     apiKey: 'AIzaSyCvv2s-irkhmNQWVs2083NYZDaknzQcDHc',
-  authDomain: 'ionic-basic-3fd4f.firebaseapp.com',
-  projectId: 'ionic-basic-3fd4f',
-  storageBucket: 'ionic-basic-3fd4f.appspot.com',
-  messagingSenderId: '102610299690',
-  appId: '1:102610299690:web:091fec25b1a81552808c53'
+    authDomain: 'ionic-basic-3fd4f.firebaseapp.com',
+    projectId: 'ionic-basic-3fd4f',
+    storageBucket: 'ionic-basic-3fd4f.appspot.com',
+    messagingSenderId: '102610299690',
+    appId: '1:102610299690:web:091fec25b1a81552808c53'
   }
 };
 
