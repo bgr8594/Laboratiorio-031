@@ -49,6 +49,10 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+  {
+    path: 'destinos', canActivate: [AuthGuard],
+    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
+  },
 ];
 
 @NgModule({
