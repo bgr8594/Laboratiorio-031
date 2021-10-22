@@ -12,12 +12,23 @@ export class DestinosPage implements OnInit {
   lugar: Lugar = new Lugar();
   destinos: any[] = [];
   ionicForm: FormGroup;
+  estado: string ="Alta Destino";
+  editando: boolean = false;
   constructor(private lugarService: LugaresService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.buildForm();
-    this.lugarService.getLugares(this.destinos);
+    this.lugarService.getLugaresChanges().subscribe(resp=>{
+      this.destinos = resp.map((e: any) => {
+        return {
+          id: e.payload.doc.id,
+          nombre: e.payload.doc.data().nombre
+        }
+      });
+    }, error =>{
+      console.error(error);
+    });
   }
   altaLugar(){
     this.lugarService.altaLugar(this.lugar);
@@ -26,8 +37,24 @@ export class DestinosPage implements OnInit {
   }
   submitForm(){
     if(this.ionicForm.valid){
-      this.lugar.nombre = this.ionicForm.get('nombre').value;
-      this.altaLugar();
+      if(!this.editando){
+        this.lugar.nombre = this.ionicForm.get('nombre').value;
+        this.lugarService.altaLugar(this.lugar).then((e: any) => {
+          this.ionicForm.reset();
+        }).catch(e=>{
+          console.error(e);
+        });
+      } else{
+        this.lugar.nombre = this.ionicForm.get('nombre').value;
+        this.lugarService.updateLugares(this.lugar.id, this.lugar).then(e=>{
+          this.editando = false;
+          this.estado = "Alta destino";
+          this.lugar = new Lugar();
+          this.ionicForm.reset();
+        }).catch(e=>{
+          console.error(e);
+        });
+      }
     }
   }
   buildForm(){
@@ -40,5 +67,22 @@ export class DestinosPage implements OnInit {
     this.ionicForm.controls[controlName].hasError(errorName) &&
     this.ionicForm.controls[controlName].touched;
   }
-
+  editarLugar(id: any, lugar: any){
+    this.editando=true;
+    this.lugar = lugar;
+    this.estado = "Editar el lugar";
+    this.ionicForm.get('nombre').setValue(lugar.nombre);
+  }
+  eliminarLugar(id: any){
+    this.estado = 'Alta Destino';
+    this.editando = false;
+    this.ionicForm.reset();
+    this.lugarService.deleteLugar(id);
+  }
+  cancelarEdicion(){
+    this.estado = 'Alta Destino';
+    this.editando = false;
+    this.ionicForm.reset();
+    this.lugar = new Lugar();
+  }
 }
