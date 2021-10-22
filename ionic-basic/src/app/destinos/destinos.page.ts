@@ -3,7 +3,6 @@ import { Lugar } from '../shared/lugar';
 import { LugaresService } from '../service/lugares.service';
 import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
-
 @Component({
   selector: 'app-destinos',
   templateUrl: './destinos.page.html',
@@ -17,16 +16,13 @@ export class DestinosPage implements OnInit {
   editando: boolean= false;
   latitud: number;
   longitud: number;
-  
   constructor(private lugarService: LugaresService,
     private formBuilder: FormBuilder) { }
-
   ngOnInit() {
     this.buildForm();
     this.getPosition();
     this.getLugares();
   }
-
   getLugares(){
     this.lugarService.getLugaresApi().subscribe((response: Lugar[])=>{
       this.destinos = response;
@@ -34,7 +30,6 @@ export class DestinosPage implements OnInit {
       console.error(error);
     });
   }
-
   submitForm(){
     if(this.ionicForm.valid){
       this.lugar.nombre = this.ionicForm.get('nombre').value;
@@ -68,7 +63,6 @@ export class DestinosPage implements OnInit {
       }
     }
   }
-
   buildForm(){
     this.ionicForm = this.formBuilder.group({
       nombre: new FormControl('',{validators: [Validators.required]})
@@ -80,15 +74,12 @@ export class DestinosPage implements OnInit {
 			this.ionicForm.controls[controlName].hasError(errorName) &&
 			this.ionicForm.controls[controlName].touched;
 	}
-
-  
   editarLugar(id: any, lugar: any) {
     this.editando = true;
     this.lugar = lugar;
     this.estado = "Editar el lugar";
     this.ionicForm.get('nombre').setValue(lugar.nombre);
   }
-
   eliminarLugar(id: any) {
     this.lugarService.borrarLugarApi(id).subscribe((response:any)=>{
       if(response){
@@ -103,14 +94,12 @@ export class DestinosPage implements OnInit {
       console.error(error);
     })
   }
-
   cancelarEdicion(){
     this.estado = "Alta destino";
     this.editando = false;
     this.ionicForm.reset();
     this.lugar = new Lugar();
   }
-
   getPosition(): Promise<any> {
 		return new Promise((resolve: any, reject: any): any => {
 			navigator.geolocation.getCurrentPosition((resp: any) => {
@@ -126,7 +115,6 @@ export class DestinosPage implements OnInit {
 			}, {timeout: 5000, enableHighAccuracy: true });
 		});
 	}  
-
   errorProceso(){
     alert("Ocurrio un error en el proceso");
   }
