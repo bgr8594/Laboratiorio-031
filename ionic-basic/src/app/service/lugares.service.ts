@@ -7,6 +7,18 @@ import { AngularFirestore } from 'angularfire2/firestore';
   providedIn: 'root'
 })
 export class LugaresService {
+  getLugaresApi() {
+    throw new Error('Method not implemented.');
+  }
+  altaLugarApi(lugar: Lugar) {
+    throw new Error('Method not implemented.');
+  }
+  editarLugarApi(id: string, lugar: Lugar) {
+    throw new Error('Method not implemented.');
+  }
+  borrarLugarApi(id: any) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private dbFirestore: AngularFirestore) { }
 

@@ -1,27 +1,26 @@
 export class Lugar {
-  id(id: any, lugar: Lugar) {
-    throw new Error('Method not implemented.');
-  }
-    nombre: string;
+  id?: string;
+  nombre: string;
+  latitud:number; 
+  longitud:number;
+  
+  ubicacion?:{latitud:string, longitud:string}
 
-    ubicacion?:{latitud:string, longitud:string}
 
 
+      constructor(){
 
-        constructor(){
+          this.nombre=''
 
-            this.nombre=''
+      }
 
-        }
+      public setUbicacion(latitud: string, Longiutd: string){
 
-        public setUbicacion(latitud: string, Longiutd: string){
+          this.ubicacion.latitud= latitud;
 
-            this.ubicacion.latitud= latitud;
+          this.ubicacion.longitud = Longiutd;
 
-            this.ubicacion.longitud = Longiutd;
-
-        }
+      }
 
 }
-
 
