@@ -14,46 +14,54 @@ export class DestinosPage implements OnInit {
   ionicForm: FormGroup;
   estado: string ="Alta Destino";
   editando: boolean = false;
+  latitud: number;
+  longitud: number;
   constructor(private lugarService: LugaresService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.buildForm();
-    this.lugarService.getLugaresChanges().subscribe(resp=>{
-      this.destinos = resp.map((e: any) => {
-        return {
-          id: e.payload.doc.id,
-          nombre: e.payload.doc.data().nombre
-        }
-      });
-    }, error =>{
-      console.error(error);
-    });
+    this.getPosition();
+    this.getLugares();
   }
-  altaLugar(){
-    this.lugarService.altaLugar(this.lugar);
-    this.lugarService.getLugares(this.destinos);
-    this.ionicForm.reset();
+
+  getLugares(){
+    this.lugarService.getLugaresApi().subscribe((response: Lugar[])=>{
+      this.destinos = response;
+    }, error=>{
+      console.error(error);
+    })
   }
   submitForm(){
     if(this.ionicForm.valid){
+      this.lugar.nombre = this.ionicForm.get('nombre').value;
+      this.lugar.latitud = this.latitud;
+      this.lugar.longitud = this.longitud;
       if(!this.editando){
-        this.lugar.nombre = this.ionicForm.get('nombre').value;
-        this.lugarService.altaLugar(this.lugar).then((e: any) => {
-          this.ionicForm.reset();
-        }).catch(e=>{
-          console.error(e);
-        });
+        this.lugarService.altaLugarApi(this.lugar).subscribe((response: any)=>{
+          if(response){
+            this.ionicForm.reset();
+            this.getLugares();
+          } else{
+            this.errorProceso();
+          }
+        }, error=>{
+          console.error(error);
+        })
       } else{
-        this.lugar.nombre = this.ionicForm.get('nombre').value;
-        this.lugarService.updateLugares(this.lugar.id, this.lugar).then(e=>{
-          this.editando = false;
-          this.estado = "Alta destino";
-          this.lugar = new Lugar();
-          this.ionicForm.reset();
-        }).catch(e=>{
-          console.error(e);
-        });
+        this.lugarService.editarLugarApi(this.lugar.id, this.lugar).subscribe((response: any)=>{
+          if(response){
+            this.editando = false; 
+            this.estado = "Alta destino"; 
+            this.lugar = new Lugar();
+            this.ionicForm.reset();
+            this.getLugares();
+          } else{
+            this.errorProceso();
+          }
+        }, error=>{
+          console.error(error);
+        })
       }
     }
   }
@@ -74,15 +82,41 @@ export class DestinosPage implements OnInit {
     this.ionicForm.get('nombre').setValue(lugar.nombre);
   }
   eliminarLugar(id: any){
-    this.estado = 'Alta Destino';
-    this.editando = false;
-    this.ionicForm.reset();
-    this.lugarService.deleteLugar(id);
+    this.lugarService.borrarLugarApi(id).subscribe((response: any)=>{
+      if(response){
+        this.getLugares();
+        this.estado = "Alta destino";
+        this.editando = false;
+        this.ionicForm.reset();
+      } else{
+        this.errorProceso();
+      }
+    }, error=>{
+      console.error(error);
+    })
   }
   cancelarEdicion(){
     this.estado = 'Alta Destino';
     this.editando = false;
     this.ionicForm.reset();
     this.lugar = new Lugar();
+  }
+  getPosition(): Promise<any>{
+    return new Promise((resolve: any, reject: any): any =>{
+      navigator.geolocation.getCurrentPosition((resp: any) => {
+        this.latitud = resp.coords.latitude;
+        this.longitud = resp.coords.longitude;
+      },
+      (err: any)=>{
+        if(err.code === 1 ){
+          alert('Favor de activar la geolocalización en tu navegador y recargar la pantalla. ');
+        }
+        this.latitud = null;
+        this.longitud = null;
+      }, {timeout: 5000, enableHighAccuracy: true});
+    });
+  }
+  errorProceso(){
+    alert('Ocurrió un error en el proceso')
   }
 }
