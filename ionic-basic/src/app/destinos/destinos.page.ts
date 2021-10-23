@@ -10,6 +10,12 @@ import { connectableObservableDescriptor } from 'rxjs/internal/observable/Connec
   styleUrls: ['./destinos.page.scss'],
 })
 export class DestinosPage implements OnInit {
+  public get lugarService(): LugaresService {
+    return this._lugarService;
+  }
+  public set lugarService(value: LugaresService) {
+    this._lugarService = value;
+  }
   lugar: Lugar = new Lugar();
   destinos: any[] = [];
   ionicForm: FormGroup;
@@ -17,24 +23,27 @@ export class DestinosPage implements OnInit {
   editando: boolean= false;
   latitud: number;
   longitud: number;
-  constructor(private lugarService: LugaresService,
+  constructor(private _lugarService: LugaresService,
     private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.buildForm();
+
+    
+
     this.getPosition();
     this.getLugares();
   }
-
   getLugares(){
     this.lugarService.getLugaresApi().subscribe((response: Lugar[])=>{
       this.destinos = response;
     }, error=>{
       console.error(error);
     });
+
   }
 
-  submitForm(): void{
+  submitForm(){
     if(this.ionicForm.valid){
       this.lugar.nombre = this.ionicForm.get('nombre').value;
       this.lugar.latitud = this.latitud;
@@ -49,7 +58,7 @@ export class DestinosPage implements OnInit {
           }
         }, error=>{
           console.error(error);
-        })      
+        })         
       } else{
         this.lugarService.editarLugarApi(this.lugar.id, this.lugar).subscribe((resposne: any)=>{
           if(resposne){
@@ -80,7 +89,7 @@ export class DestinosPage implements OnInit {
 			this.ionicForm.controls[controlName].touched;
 	}
 
-  
+
   editarLugar(id: any, lugar: any) {
     this.editando = true;
     this.lugar = lugar;
