@@ -5,15 +5,14 @@
 export const environment = {
   production: false,
    firebaseConfig: {
-    apiKey: "AIzaSyDHhl36eLn_xAvHlToDcDyDJTcg5mIrjb4",
-  authDomain: "ionicbasic-4b354.firebaseapp.com",
-  projectId: "ionicbasic-4b354",
-  storageBucket: "ionicbasic-4b354.appspot.com",
-  messagingSenderId: "595254284710",
-  appId: "1:595254284710:web:9b6da6a7932d2102a6ff67",
-  measurementId: "G-JTH9F5DGFQ"
-
-  }
+    apiKey: "AIzaSyCkpMeJBqhhXJ47JWjtadxPyo0KMypPaws",
+    authDomain: "ionic-basic-031.firebaseapp.com",
+    projectId: "ionic-basic-031",
+    storageBucket: "ionic-basic-031.appspot.com",
+    messagingSenderId: "151373407537",
+    appId: "1:151373407537:web:9c50e2e729e61829547c10"
+  },
+  apiKeyMaps: "AIzaSyCNduScdIFtfovG5JBn1kr_Sz_ID-HJ1jI"
 };
 
 /*
