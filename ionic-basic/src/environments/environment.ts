@@ -13,7 +13,8 @@ firebaseConfig: {
   messagingSenderId: "1037428430073",
   appId: "1:1037428430073:web:8dadafed01e922b2bc7e28",
   measurementId: "G-V7ZQK27JKV"
-}
+},
+apiKeyMaps: "AIzaSyBFHrb6C5Xm3Icv3xBZBQ5uUugK0kYSP4U"
 };
 
 /*
