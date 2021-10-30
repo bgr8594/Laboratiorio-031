@@ -11,7 +11,8 @@ export const environment = {
     storageBucket: 'ionic-basic-3fd4f.appspot.com',
     messagingSenderId: '102610299690',
     appId: '1:102610299690:web:091fec25b1a81552808c53'
-  }
+  },
+  apiKeyMaps: "AIzaSyC4ABtQW3i9eh5GWIxYeXqUSH467rCm87o",
 };
 
 /*

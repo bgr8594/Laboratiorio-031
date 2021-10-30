@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Lugar } from '../shared/lugar';
 import { LugaresService } from '../service/lugares.service';
 import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl } from '@angular/forms';
+import { ModalController } from '@ionic/angular';
+import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
 
 @Component({
   selector: 'app-destinos',
@@ -16,7 +18,9 @@ export class DestinosPage implements OnInit {
   editando: boolean= false;
   latitud: number;
   longitud: number;
-  constructor(private lugarService: LugaresService, private formBuilders: FormBuilder,) { }
+  constructor(private lugarService: LugaresService,
+    private formBuilders: FormBuilder,
+    private modalController: ModalController) { }
 
   ngOnInit() {
     this.buildForm();
@@ -98,6 +102,7 @@ export class DestinosPage implements OnInit {
         this.estado = "Alta destino";
         this.editando = false;
         this.ionicForm.reset();
+        this.getLugares();
       } else{
         this.errorProceso();
       }
@@ -131,6 +136,37 @@ export class DestinosPage implements OnInit {
 
   errorProceso(){
     alert("Ocurrio un error en el proceso");
+  }
+
+  async addDirection(){
+    let positionInput: any = {
+      lat: -2.898116,
+      lng: -78.99958149999999
+    };
+    if(this.latitud !== null){
+      positionInput.lat = this.latitud;
+      positionInput.lng = this.longitud;
+    }
+
+
+    const modalAdd = await this.modalController.create({
+      component: GooglemapsComponent,
+      mode: 'ios',
+      swipeToClose: true,
+      componentProps: {position: positionInput}
+    });
+
+    await modalAdd.present();
+
+    const {data} = await modalAdd.onWillDismiss();
+
+    if(data){
+      console.log('data->', data);
+      //this.cli
+      this.longitud = data.pos.lng;
+      this.latitud = data.pos.lat;
+      console.log('datos de ubiciacion actualizados, latitud: '+this.latitud+' \nlongitud:'+this.longitud);
+    }
   }
 
 }
