@@ -13,7 +13,8 @@ import { ComponentesModule } from '../componentes/componentes.module';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule    
+    HomePageRoutingModule,   
+    ComponentesModule 
   ],
   declarations: [HomePage]
 })
