@@ -64,26 +64,21 @@ export class RecetasService {
         ,'1 Cucharada de Jugo MAGGI'
         ,'1/4 Taza de Chamoy líquido'
 
- 
-
       ]
     }
   ];
 
-  constructor() {
-   }
+  constructor() { }
 
-   getReceta(idReceta: number)
-   {
-     return {...this.recetas.find(
-       (receta: Receta) => {
-         return receta.id === idReceta
-       }
-     )};
-   }
+  getReceta(idReceta: number){
+    return {...this.recetas.find(
+      (receta: Receta) =>{
+        return receta.id ===idReceta
+      }
+    )};
+  }
 
-   getRecetas()
-   {
-return [...this.recetas];
-   }
+  getRecetas(){
+    return [...this.recetas];
+  }
 }

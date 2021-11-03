@@ -4,15 +4,14 @@ import { RecetasService } from './recetas.service';
 
 @Component({
   selector: 'app-recetas',
-  templateUrl: './recetas.page.html',
-  styleUrls: ['./recetas.page.scss'],
+  templateUrl: './recetas.page.html'
 })
 export class RecetasPage implements OnInit {
-recetas: Receta[];
+  recetas: Receta[];
   constructor(private recetaService: RecetasService) { }
 
   ngOnInit() {
-this.recetas = this.recetaService.getRecetas();
+    this.recetas = this.recetaService.getRecetas();
   }
 
 }

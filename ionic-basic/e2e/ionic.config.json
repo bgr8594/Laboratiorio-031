@@ -1,0 +1,7 @@
+{
+  "name": "mi-primera-ionic-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
