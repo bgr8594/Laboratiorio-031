@@ -1,4 +1,4 @@
-<ion-header class="header-menu">
+<ion-header>
     <ion-toolbar color="primary">
         <ion-buttons slot="start">
             <ion-menu-button></ion-menu-button>
@@ -8,13 +8,13 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-menu side="start" menuId="menuPrincipal" class="my-custom-menu" contentId="menuFloat">
+<ion-menu side="start" menuId="menuPrincipal" contentId="menuFloat">
     <ion-content>
         <ion-list>
             <ion-menu-toggle *ngFor="let c of datosMenu">
                 <ion-item (click)="navegar(c.enlace)">
                     <ion-icon name='{{c.icono}}'></ion-icon>
-                    <ion-label>{{ c.nombre }}</ion-label>
+                    <ion-label class="icon-menu">{{ c.nombre }}</ion-label>
                 </ion-item>
             </ion-menu-toggle>
         </ion-list>

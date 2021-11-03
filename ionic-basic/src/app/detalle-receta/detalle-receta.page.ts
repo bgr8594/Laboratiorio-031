@@ -1,24 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Receta } from '../recetas/receta.model';
 import { RecetasService } from '../recetas/recetas.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-detalle-receta',
-  templateUrl: './detalle-receta.page.html',
-  styleUrls: ['./detalle-receta.page.scss'],
+  templateUrl: './detalle-receta.page.html'
 })
 export class DetalleRecetaPage implements OnInit {
+
+  idReceta: number;
   receta: Receta;
-  idReceta : number;
-  constructor(
-    private recetaService: RecetasService,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
-    ) { }
+
+  constructor(private recetaService: RecetasService, 
+    private router: Router, private activateRouter: ActivatedRoute) { }
 
   ngOnInit() {
-    this.activatedRoute.paramMap.subscribe(paramMap=>{
+    this.activateRouter.paramMap.subscribe(paramMap=>{
       this.idReceta = Number.parseInt(paramMap.get('idReceta'));
       this.receta = this.recetaService.getReceta(this.idReceta);
     });

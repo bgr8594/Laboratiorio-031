@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuElementsInterface } from './menu.model';
+import { MenuElement } from './menu.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,14 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./float-menu.component.scss'],
 })
 export class FloatMenuComponent implements OnInit {
-
-  datosMenu: MenuElementsInterface[] =[
+  datosMenu: MenuElement[] =[
     {nombre: 'Alumnos',enlace:'/alumnos',
   icono:'school-outline'},
     {nombre: 'Receteas',enlace:'/recetas',
     icono:'restaurant-outline'},
     {nombre: 'Tabs',enlace:'/tabs',
-    icono:'folder-outline'}
+    icono:'folder-outline'},
+    {nombre: 'register',enlace:'/register',
+    icono:'person-add'},
+    {nombre: 'login',enlace:'/login',
+    icono:'log-in'},
+    {nombre: 'logout',enlace:'/home',
+    icono:'log-out'}
   ];
 
   constructor(private router: Router) { }
@@ -25,5 +30,4 @@ export class FloatMenuComponent implements OnInit {
   navegar(link: string){
     this.router.navigate([link]);
   }
-
 }

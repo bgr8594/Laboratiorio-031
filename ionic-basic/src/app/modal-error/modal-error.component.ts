@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavParams, ModalController } from '@ionic/angular';
-
+import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-modal-error',
@@ -9,8 +8,14 @@ import { NavParams, ModalController } from '@ionic/angular';
 })
 export class ModalErrorComponent implements OnInit {
 
-  constructor(private navParams: NavParams) { }
+  constructor(private navParams: NavParams, private modalCtrl: ModalController) { }
 
   ngOnInit() {}
 
+
+  close(){
+    this.modalCtrl.dismiss({
+      'dismissed': true
+    });
+  }
 }

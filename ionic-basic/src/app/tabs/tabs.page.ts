@@ -5,13 +5,15 @@ import { NavController, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabs',
-  templateUrl: './tabs.page.html'
+  templateUrl: './tabs.page.html',
+  styleUrls: ['./tabs.page.scss'],
 })
 export class TabsPage implements OnInit {
 
-  tab1 : any = AlumnosPage;
-  tab2: any = RecetasPage;
-  constructor(private navController: NavController, private navParams :NavParams) { }
+  tab1 :any = AlumnosPage;
+  tab2 : any = RecetasPage;
+
+  constructor(private navController: NavController, private navParam: NavParams) { }
 
   ngOnInit() {
   }
