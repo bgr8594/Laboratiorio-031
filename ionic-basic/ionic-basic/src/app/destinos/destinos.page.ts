@@ -97,6 +97,7 @@ export class DestinosPage implements OnInit {
         this.estado = "Alta destino";
         this.editando = false;
         this.ionicForm.reset();
+        this.getLugares();
       } else{
         this.errorProceso();
       }
