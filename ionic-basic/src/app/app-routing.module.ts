@@ -55,17 +55,10 @@ const routes: Routes = [
   {
     path: 'galeria',  canActivate:[AuthGuard],
     loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
-  },  {
-    path: 'galeria',
-    loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
   },
   {
-    path: 'tabs',
-    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
-  },
-  {
-    path: 'recetas',
-    loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule)
+    path: 'segment-button',
+    loadChildren: () => import('./segment-button/segment-button.module').then( m => m.SegmentButtonPageModule)
   },
 
 

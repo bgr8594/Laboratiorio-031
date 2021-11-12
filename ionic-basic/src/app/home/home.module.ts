@@ -1,25 +1,16 @@
-import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
-import { AuthserviceService } from '../services/authservice.service';
+import { NgModule } from '@angular/core';
 
-@Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
-})
-export class HomePage {
+import { CommonModule } from '@angular/common';
 
-  constructor(private authSvc: AuthserviceService,
-    private router: Router, 
-    private afAuth: AngularFireAuth) {}
+import { IonicModule } from '@ionic/angular';
 
-  
+import { FormsModule } from '@angular/forms';
 
-  onLogout(){
-    this.afAuth.auth.signOut();
-    console.log("Logout!");
-    this.router.navigateByUrl('/login');
+import { HomePage } from './home.page';
 
-  }
-}
+
+
+import { HomePageRoutingModule } from './home-routing.module';
+
+import { ComponentesModule } from '../componentes/componentes.module';
+
