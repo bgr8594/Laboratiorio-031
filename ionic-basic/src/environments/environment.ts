@@ -20,7 +20,8 @@ export const environment = {
 
   measurementId: "G-VM5J1D7C8P"
 
-  }
+  },
+  apiKeyMaps: "AIzaSyC_AEQ2CCPRRmSCdWcE0xTx8Sh4GUjp7No"
 };
 
 /*
