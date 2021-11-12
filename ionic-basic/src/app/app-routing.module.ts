@@ -51,10 +51,23 @@ const routes: Routes = [
   {
     path: 'destinos', canActivate:[AuthGuard],
     loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
-  },  {
-    path: 'destinos',
-    loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
   },
+  {
+    path: 'galeria',  canActivate:[AuthGuard],
+    loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
+  },  {
+    path: 'galeria',
+    loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
+  },
+  {
+    path: 'tabs',
+    loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
+  },
+  {
+    path: 'recetas',
+    loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule)
+  },
+
 
 
 
