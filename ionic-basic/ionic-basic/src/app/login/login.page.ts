@@ -24,10 +24,8 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     /*
-    const usuario ={nombre:'Benito', activo:true,
-
+    const usuario ={nombre:'Brenda', activo:true,
     fechanaci:0};
-
       this.firestore.collection('usuario').add(usuario);
       */
 

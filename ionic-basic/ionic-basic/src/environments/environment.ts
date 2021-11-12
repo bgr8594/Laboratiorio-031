@@ -4,16 +4,16 @@
 
 export const environment = {
   production: false,
-   firebaseConfig: {
-    apiKey: "AIzaSyCkpMeJBqhhXJ47JWjtadxPyo0KMypPaws",
-    authDomain: "ionic-basic-031.firebaseapp.com",
-    projectId: "ionic-basic-031",
-    storageBucket: "ionic-basic-031.appspot.com",
-    messagingSenderId: "151373407537",
-    appId: "1:151373407537:web:9c50e2e729e61829547c10"
+  firebaseConfig: {
+    apiKey: "AIzaSyDwy3PZtEbxwg19C4GpQ8QiHzrLMEhywMY",
+    authDomain: "ionic-basic-031-e6944.firebaseapp.com",
+    projectId: "ionic-basic-031-e6944",
+    storageBucket: "ionic-basic-031-e6944.appspot.com",
+    messagingSenderId: "871648117962",
+    appId: "1:871648117962:web:c211903305737ec511e033"
   },
-  apiKeyMaps: "AIzaSyCNduScdIFtfovG5JBn1kr_Sz_ID-HJ1jI"
-};
+   apiKeyMaps: "AIzaSyDh0HjfxivRJWNTx4znH4nYaIWg4FbEBHA"
+  };
 
 /*
  * For easier debugging in development mode, you can import the following file
