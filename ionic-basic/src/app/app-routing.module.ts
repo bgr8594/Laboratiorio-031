@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-
 const routes: Routes = [
   {
-    path: 'home', canActivate: [AuthGuard],
+    path: 'home', canActivate:[AuthGuard],
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -13,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'alumnos', canActivate: [AuthGuard],
+    path: 'alumnos', canActivate:[AuthGuard],
     children: [
       {
         path:'',
@@ -26,15 +25,15 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'recetas', canActivate: [AuthGuard],
-    loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule)
-  },
-  {
-    path: 'detalle-recetas', canActivate: [AuthGuard],
+    path: 'detalle-receta', canActivate:[AuthGuard],
     loadChildren: () => import('./detalle-recetas/detalle-recetas.module').then( m => m.DetalleRecetasPageModule)
   },
   {
-    path: 'tabs', canActivate: [AuthGuard],
+    path: 'recetas', canActivate:[AuthGuard],
+    loadChildren: () => import('./recetas/recetas.module').then( m => m.RecetasPageModule)
+  },
+  {
+    path: 'tabs', canActivate:[AuthGuard],
     loadChildren: () => import('./tabs/tabs.module').then( m => m.TabsPageModule)
   },
   {
@@ -42,7 +41,7 @@ const routes: Routes = [
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
-    path: 'admin', canActivate: [AuthGuard],
+    path: 'admin', canActivate:[AuthGuard],
     loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
   },
   {
@@ -50,13 +49,23 @@ const routes: Routes = [
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'destinos', canActivate: [AuthGuard],
+    path: 'destinos', canActivate:[AuthGuard],
     loadChildren: () => import('./destinos/destinos.module').then( m => m.DestinosPageModule)
   },
   {
-    path: 'galeria', canActivate: [AuthGuard],
+    path: 'galeria',  canActivate:[AuthGuard],
     loadChildren: () => import('./galeria/galeria.module').then( m => m.GaleriaPageModule)
+  },  {
+    path: 'segment-button',
+    loadChildren: () => import('./segment-button/segment-button.module').then( m => m.SegmentButtonPageModule)
   },
+  {
+    path: 'segment-button',
+    loadChildren: () => import('./segment-button/segment-button.module').then( m => m.SegmentButtonPageModule)
+  },
+
+
+
 
 
 

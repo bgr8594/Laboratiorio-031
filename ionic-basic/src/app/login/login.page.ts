@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { ModalErrorComponent } from '../modal-error/modal-error.component';
 import { User } from '../shared/user';
 import { AuthserviceService } from '../services/authservice.service';
@@ -19,7 +19,8 @@ export class LoginPage implements OnInit {
   constructor(private router: Router,
     private modalCtrl: ModalController,
     private autSvc: AuthserviceService,
-    private formBuilders: FormBuilder,
+    private formBuilder: FormBuilder,
+    public loadingController: LoadingController
     //private firestore: AngularFirestore
     ) { }
 
@@ -37,11 +38,13 @@ export class LoginPage implements OnInit {
     if(user!=null && user.code == undefined){
       console.log('Successfully logged in!');
       setTimeout(()=>{
+        this.loadingController.dismiss();
         this.router.navigate(['/home']);
       }, 750);
 
     }
     else{
+      this.loadingController.dismiss();
       if(user.code){
         if(user.code=='auth/wrong-password' || user.code=='auth/invalid-email' || user.code=='auth/argument-error'){
           this.openModal(user);
@@ -64,12 +67,13 @@ export class LoginPage implements OnInit {
     if(this.ionicForm.valid){
       this.user.email = this.ionicForm.get('email').value;
       this.user.password = this.ionicForm.get('password').value;
+      this.presentLoadingWithOptions();
       this.onLogin();
     }
   }
 
   buildForm(){
-    this.ionicForm = this.formBuilders.group({
+    this.ionicForm = this.formBuilder.group({
       email: new FormControl('',{validators: [Validators.email, Validators.required]}),
       password: new FormControl('', {validators: [Validators.required, Validators.minLength(6), Validators.maxLength(6)]})
     });
@@ -87,4 +91,20 @@ export class LoginPage implements OnInit {
     }
     return null;
   }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      //spinner: null,
+      //duration: 5000,
+      message: 'Iniciando sesión...',
+      translucent: true,
+      //cssClass: 'custom-class custom-loading',
+      backdropDismiss: true
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed with role:', role);
+  }
+
 }
