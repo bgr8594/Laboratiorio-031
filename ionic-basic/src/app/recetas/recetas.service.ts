@@ -6,7 +6,7 @@ import { Receta } from './recetas.model';
 })
 export class RecetasService {
 
-  recetas: Receta[]=[
+  recetas: Receta[]=[ 
     {
       id: 1, 
       nombre: 'Pizza', 
