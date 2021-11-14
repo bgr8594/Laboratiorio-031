@@ -11,7 +11,6 @@ export class RecetasPage implements OnInit {
   constructor(private recetaService: RecetasService) { }
 
 
-
   ngOnInit() {
 
     this.recetas = this.recetaService.getRecetas();
