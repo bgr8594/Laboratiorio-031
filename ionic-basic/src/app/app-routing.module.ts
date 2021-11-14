@@ -11,6 +11,7 @@ const routes: Routes = [
     redirectTo: 'recetas',
     pathMatch: 'full'
   },
+  
   {
     path: 'alumnos', canActivate:[AuthGuard],
     children: [
