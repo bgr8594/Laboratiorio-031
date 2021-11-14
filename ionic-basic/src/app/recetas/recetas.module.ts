@@ -18,3 +18,4 @@ import { RecetasPage } from './recetas.page';
   declarations: [RecetasPage]
 })
 export class RecetasPageModule {}
+
