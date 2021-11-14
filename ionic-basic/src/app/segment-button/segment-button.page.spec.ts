@@ -22,3 +22,4 @@ describe('SegmentButtonPage', () => {
     expect(component).toBeTruthy();
   });
 });
+
