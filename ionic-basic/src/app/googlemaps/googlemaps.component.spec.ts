@@ -13,6 +13,7 @@ describe('GooglemapsComponent', () => {
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
+    
     fixture = TestBed.createComponent(GooglemapsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
