@@ -22,6 +22,7 @@ export class LoginPage implements OnInit {
     //,private firestore: AngularFirestore
     ) { }
 
+  
   ngOnInit() {
     /*
     const usuario ={nombre:'Benito', activo:true,
