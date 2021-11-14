@@ -22,23 +22,23 @@ export class DestinosPage implements OnInit {
     private formBuilder: FormBuilder,
     private modalController: ModalController) { }
 
-  ngOnInit() {
-    this.buildForm();
-    this.getPosition();
-    //this.getLugares();
-    this.lugarService.getLugaresChanges().subscribe(resp => {
-      this.destinos = resp.map((e: any) => {
-        return {
-          id: e.payload.doc.id,
-          nombre: e.payload.doc.data().nombre,
-          latitud: e.payload.doc.data().latitud,
-          longitud:  e.payload.doc.data().longitud
-        }
+    ngOnInit() {
+      this.buildForm();
+      this.getPosition();
+      //this.getLugares();
+      this.lugarService.getLugaresChanges().subscribe(resp => {
+        this.destinos = resp.map((e: any) => {
+          return {
+            id: e.payload.doc.id,
+            nombre: e.payload.doc.data().nombre,
+            latitud: e.payload.doc.data().latitud,
+            longitud:  e.payload.doc.data().longitud
+          }
+        });
+      }, error => {
+        console.error(error);
       });
-    }, error => {
-      console.error(error);
-    });
-  }
+    }
 
   getLugares(){
     this.lugarService.getLugaresApi().subscribe((response: Lugar[])=>{
@@ -84,28 +84,24 @@ export class DestinosPage implements OnInit {
 			this.ionicForm.controls[controlName].hasError(errorName) &&
 			this.ionicForm.controls[controlName].touched;
 	}
-
   editarLugar(id: any, lugar: any) {
     this.editando = true;
     this.lugar = lugar;
     this.estado = "Editar el lugar";
     this.ionicForm.get('nombre').setValue(lugar.nombre);
   }
-
   eliminarLugar(id: any) {
     this.estado = "Alta destino";
     this.editando = false;
     this.ionicForm.reset();
     this.lugarService.deleteLugar(id);
   }
-
   cancelarEdicion(){
     this.estado = "Alta destino";
     this.editando = false;
     this.ionicForm.reset();
     this.lugar = new Lugar();
   }
-
   getPosition(): Promise<any> {
 		return new Promise((resolve: any, reject: any): any => {
 			navigator.geolocation.getCurrentPosition((resp: any) => {
