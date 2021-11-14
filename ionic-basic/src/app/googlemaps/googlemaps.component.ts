@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
 
 declare var google: any;
 
+
 @Component({
   selector: 'app-googlemaps',
   templateUrl: './googlemaps.component.html',
