@@ -8,6 +8,7 @@ import { SegmentButtonPageRoutingModule } from './segment-button-routing.module'
 
 import { SegmentButtonPage } from './segment-button.page';
 
+
 @NgModule({
   imports: [
     CommonModule,
