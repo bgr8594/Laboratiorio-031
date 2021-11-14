@@ -18,3 +18,4 @@ import { AdminPage } from './admin.page';
   declarations: [AdminPage]
 })
 export class AdminPageModule {}
+
