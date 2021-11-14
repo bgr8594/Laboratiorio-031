@@ -7,7 +7,6 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthserviceService} from '../service/auth.service';
 
 
-
 @Component({
 
   selector: 'app-home',
