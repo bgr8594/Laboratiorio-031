@@ -7,7 +7,6 @@ import { Receta } from '../recetas/recetas.model';
 import { RecetasService } from '../recetas/recetas.service';
 
 
-
 @Component({
 
   selector: 'app-detalle-receta',
