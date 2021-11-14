@@ -75,6 +75,7 @@ export class DestinosPage implements OnInit {
       nombre: new FormControl('',{validators: [Validators.required]})
     });
   }
+  
 
   hasError: any = (controlName: string, errorName: string) => {
 		return !this.ionicForm.controls[controlName].valid &&
