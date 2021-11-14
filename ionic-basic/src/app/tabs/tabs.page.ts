@@ -6,8 +6,6 @@ import { RecetasPage } from '../recetas/recetas.page';
 
 import { NavController, NavParams } from '@ionic/angular';
 
-
-
 @Component({
 
   selector: 'app-tabs',
