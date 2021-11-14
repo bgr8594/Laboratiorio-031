@@ -24,3 +24,5 @@ export class RegisterPage implements OnInit {
     }
   }
 }
+
+
