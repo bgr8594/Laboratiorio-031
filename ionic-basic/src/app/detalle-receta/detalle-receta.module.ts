@@ -17,7 +17,6 @@ import { DetalleRecetaPageRoutingModule } from './detalle-receta-routing.module'
 import { DetalleRecetaPage } from './detalle-receta.page';
 
 
-
 @NgModule({
 
   imports: [
