@@ -46,8 +46,6 @@ export class FloatMenuComponent implements OnInit {
 
   ngOnInit() {
 
-
-
   }
 
   navegar(link: string){
