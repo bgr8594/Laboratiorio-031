@@ -16,3 +16,4 @@ export class SegmentButtonPage implements OnInit {
     console.log('Segment changed', ev);
   }
 }
+
