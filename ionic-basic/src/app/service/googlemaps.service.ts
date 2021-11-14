@@ -22,6 +22,7 @@ export class GooglemapsService {
         return;
       }
 
+      
       const script =renderer.createElement('script');
       script.id ="googleMaps";
       window['mapInit'] = () =>{
