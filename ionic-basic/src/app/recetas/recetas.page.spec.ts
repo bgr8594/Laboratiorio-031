@@ -22,3 +22,4 @@ describe('RecetasPage', () => {
     expect(component).toBeTruthy();
   });
 });
+ 
