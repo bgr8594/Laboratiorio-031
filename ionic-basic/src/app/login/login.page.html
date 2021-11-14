@@ -13,6 +13,7 @@
           <ion-input type="email" formControlName="email"></ion-input>
           <ion-text color="danger" *ngIf="hasError('email','email')">
               <h5>Debe ser un correo valido</h5>
+            
           </ion-text>
           <ion-text color="danger" *ngIf="hasError('email','required')">
               <h5>Campo requerido</h5>
