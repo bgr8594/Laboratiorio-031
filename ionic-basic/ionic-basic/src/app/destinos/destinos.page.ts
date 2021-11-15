@@ -30,7 +30,9 @@ export class DestinosPage implements OnInit {
       this.destinos = resp.map((e: any) => {
         return {
           id: e.payload.doc.id,
-          nombre: e.payload.doc.data().nombre
+          nombre: e.payload.doc.data().nombre,
+          latitud: e.payload.doc.data().latitud,
+          longitud:  e.payload.doc.data().longitud
         }
       });
     }, error => {
@@ -48,6 +50,8 @@ export class DestinosPage implements OnInit {
 
   submitForm(){
     if(this.ionicForm.valid){
+      this.lugar.latitud = this.latitud;
+      this.lugar.longitud = this.longitud;
       if(!this.editando){
         this.lugar.nombre = this.ionicForm.get('nombre').value;
         this.lugarService.altaLugar(this.lugar).then((e:any)=>{
