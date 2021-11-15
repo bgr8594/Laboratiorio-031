@@ -26,7 +26,9 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     /*
     const usuario ={nombre:'Benito', activo:true,
+
     fechanaci:0};
+
       this.firestore.collection('usuario').add(usuario);
       */
 

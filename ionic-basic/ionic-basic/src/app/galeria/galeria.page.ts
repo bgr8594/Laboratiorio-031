@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { UserPhoto } from '../shared/user-photo.model';
 import { PhotoService } from '../service/photo.service';
