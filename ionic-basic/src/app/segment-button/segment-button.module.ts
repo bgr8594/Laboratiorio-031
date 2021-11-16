@@ -17,4 +17,5 @@ import { SegmentButtonPage } from './segment-button.page';
   ],
   declarations: [SegmentButtonPage]
 })
+
 export class SegmentButtonPageModule {}

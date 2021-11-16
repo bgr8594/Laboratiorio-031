@@ -94,7 +94,6 @@ export class LoginPage implements OnInit {
 		}
 		return null;
 	}
-
   async presentLoadingWithOptions() {
     const loading = await this.loadingController.create({
       //spinner: null,
