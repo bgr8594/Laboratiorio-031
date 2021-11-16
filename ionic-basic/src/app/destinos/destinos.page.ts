@@ -10,6 +10,7 @@ import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
   selector: 'app-destinos',
   templateUrl: './destinos.page.html',
   styleUrls: ['./destinos.page.scss'],
+
 })
 export class DestinosPage implements OnInit {
   lugar: Lugar = new Lugar();
