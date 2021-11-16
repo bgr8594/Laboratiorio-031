@@ -11,8 +11,9 @@ import { HttpClient } from '@angular/common/http';
 export class LugaresService {
 
   private basePath: string ="http://localhost:8080/post";
-  constructor(private dbFirestore: AngularFirestore, 
+  constructor(private dbFirestore: AngularFirestore,
     private http: HttpClient) { }
+
 
   altaLugar(lugar: Lugar){
     const lugarTemp: any ={
@@ -39,7 +40,7 @@ export class LugaresService {
     catch(err=>{
       console.log(err);
     });
-    
+
   }
 
   getLugaresChanges(){

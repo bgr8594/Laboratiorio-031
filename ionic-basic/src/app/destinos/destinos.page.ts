@@ -5,6 +5,7 @@ import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '
 import { ModalController } from '@ionic/angular';
 import { GooglemapsComponent } from '../googlemaps/googlemaps.component';
 
+
 @Component({
   selector: 'app-destinos',
   templateUrl: './destinos.page.html',
@@ -58,7 +59,7 @@ export class DestinosPage implements OnInit {
           this.ionicForm.reset();
         }).catch(e=>{
           console.error(e);
-        });        
+        });
       } else{
         this.lugar.nombre = this.ionicForm.get('nombre').value;
         this.lugarService.updateLugares(this.lugar.id, this.lugar).then(e=>{
@@ -151,7 +152,7 @@ export class DestinosPage implements OnInit {
 				this.longitud = null;
 			}, {timeout: 5000, enableHighAccuracy: true });
 		});
-	}  
+	}
 
   errorProceso(){
     alert("Ocurrio un error en el proceso");
@@ -172,7 +173,7 @@ export class DestinosPage implements OnInit {
       component: GooglemapsComponent,
       mode: 'ios',
       swipeToClose: true,
-      componentProps: {position: positionInput} 
+      componentProps: {position: positionInput}
     });
 
     await modalAdd.present();
