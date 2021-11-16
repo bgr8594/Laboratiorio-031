@@ -7,6 +7,7 @@ import { AuthserviceService } from '../services/authservice.service';
 import {FormGroup, FormBuilder, Validators, FormControl, AbstractControl} from '@angular/forms';
 //import { AngularFirestore } from 'angularfire2/firestore';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -35,7 +36,7 @@ export class LoginPage implements OnInit {
     this.buildForm();
   }
 
-  
+
   async onLogin(){
     const user = await this.autSvc.onLogin(this.user);
     if(user!=null && user.code ==undefined){
@@ -93,7 +94,7 @@ export class LoginPage implements OnInit {
 			return { 'notZero': true };
 		}
 		return null;
-	} 
+	}
 
   async presentLoadingWithOptions() {
     const loading = await this.loadingController.create({
