@@ -1,5 +1,7 @@
 {
-    "name": "ionic-basic-2034228",
-    "integrations": {},
+    "name": "ionic-basic-1170333",
+    "integrations": {
+        "cordova": {}
+    },
     "type": "angular"
 }
